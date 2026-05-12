@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aplikasi Aduan Masyarakat Jawa Tengah</title>
+
+    <!-- Menghubungkan file CSS -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="container">
+        <h1>Aplikasi Aduan Masyarakat Jawa Tengah</h1>
+
+        <!-- Form input aduan -->
+        <form id="formAduan">
+
+            <!-- Input nama -->
+            <label>Nama Pengadu</label>
+            <input type="text" id="nama" placeholder="Masukkan nama" required>
+
+            <!-- Input alamat -->
+            <label>Alamat Pengadu</label>
+            <input type="text" id="alamat" placeholder="Masukkan alamat" required>
+
+            <!-- Input masalah -->
+            <label>Masalah Pengadu</label>
+            <textarea id="masalah" placeholder="Tuliskan masalah" required></textarea>
+
+            <!-- Input waktu kejadian -->
+            <label>Waktu Kejadian</label>
+            <input type="datetime-local" id="waktu" required>
+
+            <!-- Tombol kirim -->
+            <button type="submit">Kirim Aduan</button>
+
+        </form>
+
+        <!-- Tempat hasil rekap -->
+        <div id="hasil"></div>
+    </div>
+
+    <!-- Menghubungkan file JavaScript -->
+    <script src="script.js"></script>
+
+</body>
+</html>
