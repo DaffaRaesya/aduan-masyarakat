@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aplikasi Aduan Masyarakat Jawa Tengah</title>
+    <style>
+        /* Gaya Dasar & Background Alam */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(rgba(0, 82, 212, 0.6), rgba(67, 100, 247, 0.6)), 
+                        url('https://images.unsplash.com/photo-1501785888041-af3ef285b470?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+            background-size: cover;
+            background-attachment: fixed;
+            background-position: center;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            color: #333;
+        }
+
+        /* Kotak Form (Efek Kaca/Glassmorphism) */
+        .container {
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(10px);
+            max-width: 450px;
+            width: 90%;
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+        }
+
+        h2 {
+            text-align: center;
+            color: #0052d4;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        label {
+            font-weight: bold;
+            font-size: 0.9rem;
+            display: block;
+            margin-top: 15px;
+        }
+
+        input, textarea {
+            width: 100%;
+            padding: 12px;
+            margin-top: 5px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            box-sizing: border-box;
+            outline: none;
+            transition: 0.3s;
+        }
+
+        input:focus, textarea:focus {
+            border-color: #0052d4;
+            box-shadow: 0 0 8px rgba(0, 82, 212, 0.2);
+        }
+
+        button {
+            background: linear-gradient(to right, #0052d4, #4364f7);
+            color: white;
+            padding: 15px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            width: 100%;
+            font-size: 1rem;
+            font-weight: bold;
+            margin-top: 25px;
+            transition: 0.3s;
+        }
+
+        button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 82, 212, 0.4);
+        }
+
+        /* Bagian Rekap */
+        #rekap {
+            margin-top: 25px;
+            padding: 20px;
+            background: #f0f7ff;
+            border-radius: 12px;
+            border-left: 6px solid #0052d4;
+            display: none; /* Sembunyi sebelum tombol diklik */
+            animation: fadeIn 0.5s ease;
+        }
+
+        .success-msg {
+            color: #2d8a2d;
+            font-weight: bold;
+            text-align: center;
+            margin-top: 15px;
+            font-style: italic;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h2>Layanan Aduan Jateng</h2>
+    
+    <label>Nama Siswa (Petugas):</label>
+    <input type="text" id="namaSiswa" placeholder="Ketik nama Anda...">
+
+    <label>Alamat Pengadu:</label>
+    <input type="text" id="alamat" placeholder="Lokasi kejadian...">
+
+    <label>Masalah Pengadu:</label>
+    <textarea id="masalah" rows="3" placeholder="Apa yang ingin diadukan?"></textarea>
+
+    <label>Waktu Kejadian:</label>
+    <input type="text" id="waktu" placeholder="Contoh: Senin, 14:00 WIB">
+
+    <button onclick="prosesAduan()">KIRIM ADUAN SEKARANG</button>
+
+    <div id="rekap">
+        <h4 style="margin-top:0; color:#0052d4;">REKAP DATA:</h4>
+        <p><strong>Penerima:</strong> <span id="outNama"></span></p>
+        <p><strong>Lokasi:</strong> <span id="outAlamat"></span></p>
+        <p><strong>Aduan:</strong> <span id="outMasalah"></span></p>
+        <p><strong>Waktu:</strong> <span id="outWaktu"></span></p>
+        <hr>
+        <p class="success-msg">aduan anda sudah kami terima ,kami akan mengirimkan petugas terkait</p>
+    </div>
+</div>
+
+<script>
+    function prosesAduan() {
+        // Ambil Data
+        const nama = document.getElementById('namaSiswa').value;
+        const alamat = document.getElementById('alamat').value;
+        const masalah = document.getElementById('masalah').value;
+        const waktu = document.getElementById('waktu').value;
+
+        // Validasi Sederhana
+        if(nama === "" || alamat === "" || masalah === "") {
+            alert("Harap isi semua kolom!");
+            return;
+        }
+
+        // Masukkan ke Tampilan Rekap
+        document.getElementById('outNama').innerText = nama;
+        document.getElementById('outAlamat').innerText = alamat;
+        document.getElementById('outMasalah').innerText = masalah;
+        document.getElementById('outWaktu').innerText = waktu;
+
+        // Tampilkan Kotak Rekap
+        document.getElementById('rekap').style.display = 'block';
+    }
+</script>
+
+</body>
+</html>
